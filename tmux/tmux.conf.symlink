@@ -1,0 +1,114 @@
+# neovim colors compability
+set -g default-terminal "xterm-256color"
+
+# Start windows and pane numbering with index 1 instead of 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# re-number windows when one is closed
+set -g renumber-windows on
+
+# Allow setting title for window
+set -g set-titles on
+set -g set-titles-string "#T"
+
+# Source file
+unbind r
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Set prefix key to c-f instead of defaul c-b
+unbind C-b
+set -g prefix C-f
+bind C-f send-prefix
+
+# toogle last window by hitting again C-f
+bind-key C-f last-window
+
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Select and copy with v and y, instead of default space and enter
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
+# Split horiziontal and vertical splits, instead of % and "
+bind-key v split-window -h -c '#{pane_current_path}'
+bind-key s split-window -v -c '#{pane_current_path}'
+
+# Pane movement shortcuts
+bind-key h   select-pane -L
+bind-key C-h select-pane -L
+bind-key j   select-pane -D
+bind-key C-j select-pane -D
+bind-key k   select-pane -U
+bind-key C-k select-pane -U
+bind-key l   select-pane -R
+bind-key C-l select-pane -R
+
+# Equally resize all panes
+bind-key = select-layout even-horizontal
+bind-key | select-layout even-vertical
+
+# Resize panes
+bind-key -r J resize-pane -D 5
+bind-key -r K resize-pane -U 5
+bind-key -r H resize-pane -L 5
+bind-key -r L resize-pane -R 5
+
+bind-key -r "<" swap-window -t -1
+bind-key -r ">" swap-window -t +1
+
+# Disable confirm before killing
+bind-key x kill-pane
+
+# This tmux statusbar config was created by tmuxline.vim
+# on Wed, 25 Nov 2015
+
+set -g status-bg "colour236"
+set -g message-command-fg "colour231"
+set -g status-justify "left"
+set -g status-left-length "100"
+set -g status "on"
+set -g pane-active-border-fg "colour148"
+set -g message-bg "colour240"
+set -g status-right-length "100"
+set -g status-right-attr "none"
+set -g message-fg "colour231"
+set -g message-command-bg "colour240"
+set -g status-attr "none"
+set -g pane-border-fg "colour240"
+set -g status-left-attr "none"
+setw -g window-status-fg "colour245"
+setw -g window-status-attr "none"
+setw -g window-status-activity-bg "colour236"
+setw -g window-status-activity-attr "none"
+setw -g window-status-activity-fg "colour148"
+setw -g window-status-separator ""
+setw -g window-status-bg "colour236"
+set -g status-left "#{prefix_highlight}#[fg=colour22,bg=colour148,bold] #S #[fg=colour148,bg=colour236,nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=colour244,bg=colour238] Continuum: #{continuum_status} #[fg=colour240,bg=colour236,nobold,nounderscore,noitalics]#[fg=colour250,bg=colour240] %Y-%m-%d %H:%M #[fg=colour252,bg=colour240,nobold,nounderscore,noitalics]#[fg=colour241,bg=colour252] #h "
+setw -g window-status-format "#[fg=colour245,bg=colour236] #I #[fg=colour245,bg=colour236]#W "
+setw -g window-status-current-format "#[fg=colour236,bg=colour240,nobold,nounderscore,noitalics]#[fg=colour231,bg=colour240] #I #[fg=colour231,bg=colour240]#W #[fg=colour240,bg=colour236,nobold,nounderscore,noitalics]"
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+set -g @plugin 'tmux-plugins/tmux-sessionist'
+set-option -g @sessionist-alternate "F" # for consistency behavior, like ctrl-f-f
+
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @copycat_file_search 'C-t'
+
+set -g @plugin 'tmux-plugins/tmux-open'
+
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-capture-pane-contents 'on'
+set -g @resurrect-strategy-nvim 'session'
+
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-save-interval '25'
+
+# Initialize TMUX plugin manager
+run '~/.tmux/plugins/tpm/tpm'
