@@ -19,6 +19,7 @@ source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 setopt HIST_IGNORE_DUPS # preventing duplicate lines in the history
 
 # aliases
+alias srcenv="source $ZDOTDIR/.zshenv && source $ZDOTDIR/.zshrc && echo 'Reloaded'"
 alias vi=nvim
 alias vim=nvim
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
