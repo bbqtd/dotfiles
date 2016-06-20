@@ -1,0 +1,35 @@
+ZSH="$XDG_CONFIG_HOME/zsh"
+
+# TODO: research fpath
+fpath=("$ZSH/fpath" $fpath) 
+
+source "$ZSH/completion.zsh"
+
+# initialize autocomplete
+autoload -U compinit add-zsh-hook
+compinit
+
+autoload -U promptinit && promptinit
+prompt pure
+
+# TODO: fix this hardcode
+source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# history
+setopt HIST_IGNORE_DUPS # preventing duplicate lines in the history
+
+# aliases
+alias vi=nvim
+alias vim=nvim
+alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+
+alias -s go=nvim
+alias -s json=nvim
+alias -s js=nvim
+alias -s md=nvim
+alias -s sh=nvim
+alias -s tex=nvim
+alias -s zsh=nvim
+
+alias -g ...='../..'
+alias -g ....='../../..'
