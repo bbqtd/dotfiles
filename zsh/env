@@ -1,0 +1,21 @@
+DOTFILES="$HOME/.dotfiles"
+
+# XDG Spec: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+source "$DOTFILES/zsh/xdg_env"
+
+export EDITOR='nvim'
+
+CODEPATH="$HOME/Code"
+
+# tmux
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR/tmux"
+
+# zsh
+ZDOTDIR="$HOME/.zsh"
+
+# neovim
+export NVIM_LOG_FILE="$XDG_DATA_HOME/nvim/log/.nvimlog"
+
+# golang
+export GOPATH="$CODEPATH/go"
+GOBIN="$GOPATH/bin"
