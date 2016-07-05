@@ -19,3 +19,7 @@ export NVIM_LOG_FILE="$XDG_DATA_HOME/nvim/log/.nvimlog"
 # golang
 export GOPATH="$CODEPATH/go"
 GOBIN="$GOPATH/bin"
+
+# npm
+export npm_config_userconfig="$XDG_CONFIG_HOME/npm/config"
+export npm_config_cache="$XDG_CACHE_HOME/npm"
