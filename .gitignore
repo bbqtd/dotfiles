@@ -1,1 +1,11 @@
 .DS_Store
+
+/* fish */
+/fisherman/*
+
+/fish/fishd.*
+
+/fish/functions/*
+!/fish/functions/tmux.fish
+
+/fish/completions/*

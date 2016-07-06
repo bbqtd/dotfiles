@@ -1,6 +1,0 @@
-# load environment variables
-source ~/.dotfiles/shell/env
-
-# init path
-typeset -U path
-path=(/usr/local/bin /usr/bin /bin /usr/sbin /sbin $GOBIN)
