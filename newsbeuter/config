@@ -1,0 +1,12 @@
+# configuration commands can be found here
+# http://newsbeuter.org/doc/newsbeuter.html#_first_steps
+
+### Fetching
+refresh-on-startup yes # update all feeds on startup
+auto-reload        yes # auto reload feed
+reload-time        120 # minutes if `auto-reload` is on
+reload-threads     2   # number of threads using when reload is going
+
+cleanup-on-quit no # if yes you will lose marks on next startup
+
+browser "open %u" # open url in default browser

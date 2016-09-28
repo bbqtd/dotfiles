@@ -1,0 +1,14 @@
+[core]
+	autocrlf = input
+[user]
+	name = bbqtd
+	email = bbqtd@users.noreply.github.com
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	; hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --decorate --date=short
+	hist = log --graph --oneline --decorate --all
+	type = cat-file -t
+	dump = cat-file -p
