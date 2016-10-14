@@ -1,6 +1,4 @@
 ### general
-# drop all inheritance and set initial state of $PATH
-set --export PATH /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin
 
 # XDG Spec: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 set --export XDG_CONFIG_HOME ~/.config
@@ -31,3 +29,6 @@ set --export PATH $GOPATH/bin $PATH
 # npm
 set --export npm_config_userconfig $XDG_CONFIG_HOME/npm/config
 set --export npm_config_cache $XDG_CACHE_HOME/npm
+
+# tex
+set --export PATH $PATH /Library/Tex/texbin

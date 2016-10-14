@@ -1,4 +1,7 @@
 fisherman/await
+bbqtd/docker-alias.git
+barnybug/docker-fish-completion
 fisherman/fzf
 fisherman/last_job_id
 rafaelrinaldi/pure
+fisherman/rbenv
