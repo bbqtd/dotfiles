@@ -10,22 +10,31 @@ $ curl -fLo "$XDG_DATA_HOME/nvim/autoload/plug.vim" --create-dirs \
 -   <https://github.com/tpope/vim-repeat>
 -   <https://github.com/Chiel92/vim-autoformat>
 
--   `ctrl-i` / `ctrl-o` - jump to next (inside) / previous (outside) location
-      cursor.
+-   `ctrl-i` / `ctrl-o` - jump to next (inside) / previous (outside) location cursor.
+-   `zR` - open (**remove**) all folds
+-   `zM` - close (**make**) all folds
 
 ## Plugins
 
-#### lightline
+TODO
 
-#### vim-easydir
+### lightline
 
-#### vim-easy-align
+TODO
 
-#### vim-commentary
+### vim-easydir
+
+TODO
+
+### vim-easy-align
+
+TODO
+
+### vim-commentary
 
 -   `gcc` - comment line
 
-#### vim-surround
+### vim-surround
 
 -   `ds{target}` - **d**elete **s**urroundings
 -   `cs{target}{replacement}` - **c**hange **s**urroundings `{target}` on
@@ -35,17 +44,23 @@ $ curl -fLo "$XDG_DATA_HOME/nvim/autoload/plug.vim" --create-dirs \
 -   `yS`
 -   `ySS`
 
-#### vim-repeat
+### vim-repeat
 
-#### vim-autoformat
+TODO
 
-#### neomake
+### vim-autoformat
+
+TODO
+
+### neomake
 
 Async job runner on events (for linters, builders and etc)
 
-#### deoplete
+### deoplete
 
-#### vim-go
+TODO
+
+### vim-go
 
 -   <https://github.com/fatih/vim-go-tutorial>
 -   `:GoDecls` & `:GoDeclsDir`
@@ -59,11 +74,11 @@ Async job runner on events (for linters, builders and etc)
     -   `:AV` -
     -   `:AS` -
 
-#### vim-markdown
+### vim-markdown
 
-#### Problems
+TODO
 
--   Folding in `markdown`
+### Problems
 
 -   Need hock for updating vim linter
 -   Need hock for ruby-lint

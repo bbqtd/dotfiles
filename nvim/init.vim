@@ -12,33 +12,49 @@ Plug 'tpope/vim-obsession'  " create and continuously updated session file
 " Plug 'tpope/vim-fugitive'   " git integration
 Plug 'tpope/vim-repeat'     " extend '.' functionality
 Plug 'benekastah/neomake', { 'for': ['sh', 'vim', 'ruby'] } " async jobs runner (linters, builders, ...)
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
 
-Plug 'Chiel92/vim-autoformat', { 'for': 'markdown' } " need more research
+Plug 'Chiel92/vim-autoformat' " need more research
 
 """ Languge specific extensions
 Plug 'fatih/vim-go',            { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'vim-ruby/vim-ruby',       { 'for': 'ruby' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'lervag/vimtex',           { 'for': ['plaintex', 'tex'] }
+Plug 'ferreum/vim-fish',        { 'for': 'fish' }
+
+
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
+" Plug 'leafgarland/typescript-vim'
+Plug 'elzr/vim-json', { 'for': 'json' }
+" Autocomplete (npm install -g tern)
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx', 'json'] }
+" JS Documentation comments
+" Plug 'heavenshell/vim-jsdoc', { 'on': ['JsDoc'] }
 
 """ Autocomplete
-" https://github.com/Shougo/deoplete.nvim
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make'}
-
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 
 Plug 'ctrlpvim/ctrlp.vim', { 'for': 'go' }
 
 
 
 " Plug 'benekastah/neomake', { 'for': ['sh', 'vim', 'ruby'] }
+Plug 'neomake/neomake'
 
 " utils
 " Plug 'duggiefresh/vim-easydir' " create, edit and save files and directories
 " Plug 'junegunn/vim-easy-align' " allign like a boss
+Plug 'junegunn/goyo.vim'
+
 
 call plug#end()
+let g:goyo_width = 120
 " }}}
 
 " FZF <3 {{{
@@ -56,6 +72,8 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
 
+""" vim-markdown settings
+let g:vim_markdown_folding_level = 2
 
 """ colors
 let g:rehash256        = 1
@@ -64,11 +82,11 @@ colorscheme molokai
 
 let g:is_bash = 1 " sh -> bash
 
-""" mapleader
+""" leader
 let g:mapleader = ','
 
 """ general
-lan en_US
+lan en_US                    " UI language
 set history=500              " Do you need huge history?
 set number                   " Numerating lines
 set showcmd                  " Show me what I'm typing
@@ -82,6 +100,9 @@ set ignorecase               " Search case insensitive...
 set smartcase                " ... but not it begins with upper case
 set nolazyredraw             " don't be lazy, but sometimes lazy is is fine
 set completeopt=menu,menuone
+set keymap=russian-jcuken " another input language (ctrl-^ for swap)
+set spelllang=en_us,ru_yo " spell check languages
+" set spell " Spell check by default
 
 """ editing/sourcing config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -135,21 +156,38 @@ augroup filetype_vim
 	autocmd!
 	autocmd FileType vim setlocal foldmethod=marker
 	autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-augroup END
+	autocmd FileType vim setlocal formatoptions=jcrql
+augroup end
+" }}}
+
+" Fish file settings ----------------- {{{
+augroup filetype_fish
+	autocmd!
+	autocmd FileType fish setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+augroup end
 " }}}
 
 " Golang file settings {{{
 augroup filetype_go
 	autocmd!
 	autocmd FileType go setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+	autocmd FileType go setlocal formatoptions=cqjr
 augroup end
 " }}}
 
 " JavaScript file settings {{{
 augroup filetype_js
 	autocmd!
-	autocmd FileType js setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-	autocmd BufWritePre *.js :call <sid>StripTrailingWhitespaces()
+	autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+	" autocmd BufWritePre *.js :call <sid>StripTrailingWhitespaces()
+augroup end
+" }}}
+
+" TeX file settings {{{
+augroup filetype_tex
+	autocmd!
+	autocmd FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+	autocmd FileType tex setlocal textwidth=90
 augroup end
 " }}}
 
@@ -169,17 +207,6 @@ augroup end
 " }}}
 " }}}
 
-" Format Settings {{{
-set textwidth=80
-
-" c - auto-wrap comments using `textwidth`
-" r - auto-insert comment symbol after hitting `Enter` in `Insert mode`
-" q - allow formatting of comments with `gq`
-" n - format numbered list
-" j - Where it makes sense, remove a comment leader when joining lines.
-set formatoptions=crqnj
-" }}}
-
 " QuickFix {{{
 " Jump to next error
 map <C-n> :cnext<CR>
@@ -194,6 +221,20 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOBIN.'gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
+""" for tex
+if !exists('g:deoplete#omni#input_patterns')
+	let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = '\\(?:'
+			\ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+			\ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+			\ . '|hyperref\s*\[[^]]*'
+			\ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+			\ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+			\ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+			\ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ .')'
 " Clean trailing whitespace
 " nnoremap <leader>ww <sid>StripTrailingWhitespaces()<cr>
 
