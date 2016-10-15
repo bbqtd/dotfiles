@@ -100,8 +100,19 @@ set ignorecase               " Search case insensitive...
 set smartcase                " ... but not it begins with upper case
 set nolazyredraw             " don't be lazy, but sometimes lazy is is fine
 set completeopt=menu,menuone
-set keymap=russian-jcuken " another input language (ctrl-^ for swap)
-set spelllang=en_us,ru_yo " spell check languages
+
+""" multilanguage support
+" one note: ctrl-^ same as ctrl-6 combo!!!
+" for changing between input type use ctrl-6, don't use your system input
+" otherwise your binds and motion would be broken.
+set keymap=russian-jcuken    " another input language
+set iminsert=0               " use english as default input type
+set imsearch=-1              " same input type in search as insert mode
+
+""" spell check
+" For downloading dictionary and initializing it use :set spell
+" :set nospell turn off spell check
+set spelllang=en_us,ru_yo    " spell check languages
 " set spell " Spell check by default
 
 """ editing/sourcing config
