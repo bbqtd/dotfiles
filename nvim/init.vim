@@ -23,6 +23,7 @@ Plug 'vim-ruby/vim-ruby',       { 'for': 'ruby' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex',           { 'for': ['plaintex', 'tex'] }
 Plug 'ferreum/vim-fish',        { 'for': 'fish' }
+Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
