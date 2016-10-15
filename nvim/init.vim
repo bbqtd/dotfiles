@@ -109,6 +109,9 @@ set completeopt=menu,menuone
 set keymap=russian-jcuken    " another input language
 set iminsert=0               " use english as default input type
 set imsearch=-1              " same input type in search as insert mode
+" better use Ctrl-l instead Ctrl-^
+inoremap <C-L> <C-^>
+cnoremap <C-L> <C-^>
 
 """ spell check
 " For downloading dictionary and initializing it use :set spell
