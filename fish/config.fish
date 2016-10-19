@@ -9,10 +9,14 @@ set --export XDG_RUNTIME_DIR ~/.runtime
 # user environment
 set --export EDITOR nvim
 set --export WORKSPACE_HOME ~/Workspace
+set --export LOCAL_BIN ~/.local/bin
+
+set --export PATH $LOCAL_BIN $PATH
 
 ### tools
 # neo
 set --export NVIM_LOG_FILE $XDG_DATA_HOME/nvim/log/.nvimlog
+# set --export USR_LOG_FILE $XDG_DATA_HOME/nvim/log/.usrlog
 
 # tmux
 set --export TMUX_TMPDIR $XDG_RUNTIME_DIR/tmux
@@ -25,8 +29,6 @@ set --export FZF_TMUX 1
 # like gorename would be broken
 set --export GOPATH (realpath $WORKSPACE_HOME/go) 
 set --export GOBIN $GOPATH/bin
-set --export GOOS (go env GOOS)
-set --export GOARCH (go env GOARCH)
 
 set --export PATH $GOBIN $PATH
 
