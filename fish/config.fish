@@ -24,7 +24,11 @@ set --export FZF_TMUX 1
 # because I use symlink for go workspace me need resolve it otherwise some tools
 # like gorename would be broken
 set --export GOPATH (realpath $WORKSPACE_HOME/go) 
-set --export PATH $GOPATH/bin $PATH
+set --export GOBIN $GOPATH/bin
+set --export GOOS (go env GOOS)
+set --export GOARCH (go env GOARCH)
+
+set --export PATH $GOBIN $PATH
 
 # npm
 set --export npm_config_userconfig $XDG_CONFIG_HOME/npm/config
