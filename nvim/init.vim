@@ -1,92 +1,79 @@
-" Plugins {{{
+" vim-plug {{{
 call plug#begin('$XDG_DATA_HOME/nvim/site/plugged')
 
 """ Candy
-Plug 'fatih/molokai'
+" Plug 'fatih/molokai'
+Plug 'tomasr/molokai'
+Plug 'dracula/vim'
 Plug 'itchyny/lightline.vim'
 
 """ Core tools
+Plug 'editorconfig/editorconfig-vim' " format style between editors
+Plug 'neomake/neomake'      " async job runner
 Plug 'tpope/vim-commentary' " comment everything like a boss
 Plug 'tpope/vim-surround'   " change or insert symbol around something
-Plug 'tpope/vim-obsession'  " create and continuously updated session file
+" Plug 'tpope/vim-obsession'  " create and continuously updated session file
 " Plug 'tpope/vim-fugitive'   " git integration
 Plug 'tpope/vim-repeat'     " extend '.' functionality
-Plug 'benekastah/neomake', { 'for': ['sh', 'vim', 'ruby'] } " async jobs runner (linters, builders, ...)
 Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
-
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async complete system
 Plug 'Chiel92/vim-autoformat' " need more research
+" Plug 'duggiefresh/vim-easydir' " create, edit and save files and directories
+" Plug 'junegunn/vim-easy-align' " allign like a boss
+Plug 'Raimondi/delimitMate'
 
 """ Languge specific extensions
-Plug 'fatih/vim-go',            { 'for': 'go', 'do': ':GoInstallBinaries' }
-Plug 'vim-ruby/vim-ruby',       { 'for': 'ruby' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'lervag/vimtex',           { 'for': ['plaintex', 'tex'] }
-Plug 'ferreum/vim-fish',        { 'for': 'fish' }
-Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+""" Golang
+Plug 'fatih/vim-go',      { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make' }
 
-
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
-" Plug 'leafgarland/typescript-vim'
-Plug 'elzr/vim-json', { 'for': 'json' }
-" Autocomplete (npm install -g tern)
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx', 'json'] }
+""" EcmaScript
+Plug 'pangloss/vim-javascript',  { 'for': ['javascript', 'jsx'] }
+Plug 'mxw/vim-jsx',              { 'for': 'jsx' }
+Plug 'elzr/vim-json',            { 'for': 'json' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
+Plug 'millermedeiros/vim-esformatter', { 'for': ['javascript', 'jsx'] }
 " JS Documentation comments
 " Plug 'heavenshell/vim-jsdoc', { 'on': ['JsDoc'] }
 
-""" Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+""" Ruby
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
-Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make'}
-Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-
-Plug 'ctrlpvim/ctrlp.vim', { 'for': 'go' }
-
-
-
-" Plug 'benekastah/neomake', { 'for': ['sh', 'vim', 'ruby'] }
-Plug 'neomake/neomake'
-
-" utils
-" Plug 'duggiefresh/vim-easydir' " create, edit and save files and directories
-" Plug 'junegunn/vim-easy-align' " allign like a boss
+""" Markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim'
 
+""" TeX
+Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
+
+""" Fish
+Plug 'ferreum/vim-fish', { 'for': 'fish' }
+
+""" Docker
+Plug 'docker/docker', { 'for': 'Dockerfile', 'rtp': '/contrib/syntax/vim/'}
+
+""" Java
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+
+""" Tmux
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+
+Plug 'chase/vim-ansible-yaml', { 'for': ['yaml', 'ansible'] }
 
 call plug#end()
-let g:goyo_width = 120
 " }}}
 
-" FZF <3 {{{
-nnoremap <c-p> :Files<cr>
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-" }}}
-
-""" vim-markdown settings
-let g:vim_markdown_folding_level = 2
-
-""" colors
-let g:rehash256        = 1
-let g:molokai_original = 1
+" Colors {{{
+" let g:rehash256 = 1
+set background=dark
+" let g:molokai_original = 1
 colorscheme molokai
+" colorscheme dracula
+" }}}
 
-let g:is_bash = 1 " sh -> bash
+" Global settings {{{
 
-""" leader
-let g:mapleader = ','
-
-""" general
+" Sensible settings {{{
 lan en_US                    " UI language
 set history=500              " Do you need huge history?
 set number                   " Numerating lines
@@ -102,7 +89,14 @@ set smartcase                " ... but not it begins with upper case
 set nolazyredraw             " don't be lazy, but sometimes lazy is is fine
 set completeopt=menu,menuone
 
-""" multilanguage support
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+" }}}
+
+" Multilanguage settings {{{
 " one note: ctrl-^ same as ctrl-6 combo!!!
 " for changing between input type use ctrl-6, don't use your system input
 " otherwise your binds and motion would be broken.
@@ -118,16 +112,7 @@ cnoremap <C-L> <C-^>
 " :set nospell turn off spell check
 set spelllang=en_us,ru_yo    " spell check languages
 " set spell " Spell check by default
-
-""" editing/sourcing config
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Time out on key codes but not mappings.
-" Basically this makes terminal Vim work sanely.
-set notimeout
-set ttimeout
-set ttimeoutlen=10
+" }}}
 
 " Show invisible: http://vimcasts.org/episodes/show-invisibles/ {{{
 
@@ -136,26 +121,39 @@ set listchars=tab:▸\ ,eol:¬
 
 " Show trailing whitespaces only in `normal mode`
 augroup trailing
-	au!
-	au InsertEnter * :set listchars-=trail:⌴
-	au InsertLeave * :set listchars+=trail:⌴
+	autocmd!
+	autocmd InsertEnter * :set listchars-=trail:⌴
+	autocmd InsertLeave * :set listchars+=trail:⌴
 augroup END
 
 " Shortcut to rapidly toggle show invisible
 nnoremap <leader>l :set list!<CR>
 " }}}
 
-""" Easy navigation between splits
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-h> <c-w>h
-noremap <c-l> <c-w>l
+" Key Mappings {{{
 
-""" python
+" leader
+let g:mapleader = ','
+
+""" editing/sourcing config
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+""" Easy navigation between splits
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" }}}
+
+" python {{{
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_python_provider  = 1 " disable Python 2 support
 let g:python_host_skip_check  = 1 " disable the Python 2 interpreter check
 let g:python3_host_skip_check = 1 " disable the Python 3 interpreter check
+" }}}
+
+" }}}
 
 " FileType settings {{{
 "
@@ -166,59 +164,131 @@ let g:python3_host_skip_check = 1 " disable the Python 3 interpreter check
 " - for simplicity just use `tabstop` == `softtabstop` == `shiftwidth` and
 "   toogle `exapndtab
 "
-" Vimscript file settings ---------------------- {{{
-augroup filetype_vim
+
+augroup custom_filetypes
 	autocmd!
-	autocmd FileType vim setlocal foldmethod=marker
-	autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-	autocmd FileType vim setlocal formatoptions=jcrql
-augroup end
+	autocmd BufNewFile,BufRead .esformatter set filetype=json
+augroup END
+
+" JSON Settings {{{
+augroup local_json_settings
+	autocmd!
+	autocmd FileType json setlocal
+				\ expandtab
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2
+augroup END
 " }}}
 
-" Fish file settings ----------------- {{{
-augroup filetype_fish
+" Markdown settings {{{
+augroup local_markdown_settings
 	autocmd!
-	autocmd FileType fish setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-augroup end
+	autocmd FileType markdown setlocal
+				\ spell
+				\ textwidth=90
+augroup END
 " }}}
 
-" Golang file settings {{{
-augroup filetype_go
+" Vim settings {{{
+augroup local_vim_settings
 	autocmd!
-	autocmd FileType go setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-	autocmd FileType go setlocal formatoptions=cqjr
-augroup end
+	autocmd FileType vim setlocal
+				\ noexpandtab
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2 
+				\ formatoptions=jcrql
+				\ foldmethod=marker
+augroup END
+
 " }}}
 
-" JavaScript file settings {{{
-augroup filetype_js
+" YAML settings {{{
+augroup local_yaml_settings
 	autocmd!
-	autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-	" autocmd BufWritePre *.js :call <sid>StripTrailingWhitespaces()
-augroup end
+	autocmd FileType yaml setlocal
+				\ expandtab
+				\ tabstop=2 
+				\ softtabstop=2
+				\ shiftwidth=2
+				\ ft=ansible
+augroup END
 " }}}
 
-" TeX file settings {{{
-augroup filetype_tex
+" Fish settings {{{
+augroup local_fish_settings
 	autocmd!
-	autocmd FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-	autocmd FileType tex setlocal textwidth=90
-augroup end
+	autocmd FileType fish setlocal
+				\ noexpandtab 
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2 
+augroup END
 " }}}
 
-" Ruby file settings {{{
-augroup filetype_ruby
+" Go settings {{{
+augroup local_go_settings
 	autocmd!
-	autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-	autocmd BufWritePre *.rb :call <sid>StripTrailingWhitespaces()
-augroup end
+	autocmd FileType go setlocal
+				\ noexpandtab 
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2
+				\ formatoptions=cqjr
+augroup END
 " }}}
 
-" Makefile file settings {{{
-augroup filetype_make
+" JavaScript settings {{{
+augroup local_javascript_settings
 	autocmd!
-	autocmd FileType make setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-augroup end
+	autocmd FileType javascript setlocal
+				\ expandtab
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2 
+				\ formatoptions-=o
+	autocmd FileType javascript.jsx setlocal
+				\ expandtab
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2 
+				\ formatoptions-=o
+augroup END
+" }}}
+
+" TeX settings {{{
+augroup local_tex_settings
+	autocmd!
+	autocmd FileType tex setlocal
+				\ noexpandtab
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2
+				\ textwidth=90
+augroup END
+" }}}
+
+" Ruby settings {{{
+augroup local_ruby_settings
+	autocmd!
+	autocmd FileType ruby setlocal
+				\ expandtab 
+				\ tabstop=2
+				\ softtabstop=2
+				\ shiftwidth=2 
+augroup END
+" }}}
+
+" Makefile settings {{{
+augroup local_make_settings
+	autocmd!
+	autocmd FileType make setlocal
+				\ noexpandtab
+				\ tabstop=8
+				\ softtabstop=8
+				\ shiftwidth=8 
+augroup END
 " }}}
 " }}}
 
@@ -230,10 +300,14 @@ map <C-m> :cprevious<CR>
 " Close QuickFix
 nnoremap <leader>a :cclose<CR>
 " }}}
-"
-""" autocomplete
+
+" Plugins {{{
+
+" deoplete {{{
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = $GOBIN.'gocode'
+
+" golang
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 """ for tex
@@ -250,54 +324,40 @@ let g:deoplete#omni#input_patterns.tex = '\\(?:'
 			\ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
 			\ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
 			\ .')'
-" Clean trailing whitespace
-" nnoremap <leader>ww <sid>StripTrailingWhitespaces()<cr>
+" }}}
 
-function! <sid>StripTrailingWhitespaces()
-	" Preparation: save last search, and cursor position.
-	let _s=@/
-	let l = line(".")
-	let c = col(".")
-	" Do the business:
-	%s/\s\+$//e
-	" Clean up: restore previous search history, and cursor position
-	let @/=_s
-	call cursor(l, c)
-endfunction
-
-" === easy align === "
-
+" easy align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" ==================== neomake ====================
-
-
-" {{{ neomake options
-" let g:neomake_list_height = 3
-" let g:neomake_open_list = 0
-" let g:neomake_serialize = 1
-" let g:neomake_serialize_abort_on_error = 1
-" let g:neomake_verbose = 1
-" let g:neomake_javascript_enabled_checkers = ['eslint']
-" let g:neomake_scss_enabled_checkers = ['scss-lint']
-let g:neomake_sh_enabled_checkers = ['shellcheck']
-let g:neomake_ruby_enabled_checkers = ['rubocop', 'mri']
-let g:neomake_vim_enabled_checkers = ['vint']
-
-" au BufRead,BufNewFile *.zsh set filetype=sh
-" autocmd! BufWritePost,BufEnter *.sh,*.zsh,*.vim Neomake
-augroup neomake_grp
-	autocmd! BufWritePost *sh,*.vim,*rb Neomake
-augroup end
 " }}}
 
+" editorconfig-vim {{{
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" }}}
 
-" ==================== lightline ====================
-" Lightline {{{ 
+" fzf {{{
+nnoremap <c-p> :Files<cr>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" }}}
+
+" goyo.vim {{{
+let g:goyo_width = 120
+" }}}
+
+" lightline {{{
 let g:lightline = {
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste'],
@@ -398,7 +458,6 @@ function! CtrlPMark()
     return ''
   endif
 endfunction
-" }}}
 
 let g:ctrlp_status_func = {
       \ 'main': 'CtrlPStatusFunc_1',
@@ -416,8 +475,48 @@ endfunction
 function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
+" }}}
 
-" ==================== vim-go ====================
+" neomake {{{
+" let g:neomake_list_height = 3
+" let g:neomake_open_list = 0
+" let g:neomake_serialize = 1
+" let g:neomake_serialize_abort_on_error = 1
+" let g:neomake_verbose = 1
+" let g:neomake_javascript_enabled_checkers = ['eslint']
+" let g:neomake_scss_enabled_checkers = ['scss-lint']
+" let g:neomake_sh_enabled_checkers = ['shellcheck']
+" let g:neomake_ruby_enabled_checkers = ['rubocop', 'mri']
+" let g:neomake_vim_enabled_checkers = ['vint']
+
+" au BufRead,BufNewFile *.zsh set filetype=sh
+" autocmd! BufWritePost,BufEnter *.sh,*.zsh,*.vim Neomake
+" augroup neomake_grp
+" 	autocmd! BufWritePost *sh,*.vim,*rb Neomake
+" augroup end
+" }}}
+
+" vim-autoformat {{{
+let g:formatdef_standard_javascript = '"standard --fix --stdin"'
+let g:formatters_javascript = ['standard_javascript']
+
+nnoremap <leader>a :Autoformat<cr>
+" }}}
+
+" vim-go {{{
+" highlight
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_build_constraints = 1
+
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = 'goimports'
 let g:go_autodetect_gopath = 1
@@ -466,10 +565,35 @@ augroup vimgo_binds
 	autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 	" :AS -> :GoAlternate in split
 	autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup end
+augroup END
+" }}}
 
-" ==================== vim-autoformat ====================
+" vim-json {{{
+let g:vim_json_syntax_conceal = 0
+" }}}
 
-augroup vimautoformat_grp
-	autocmd BufWrite *.md :Autoformat
-augroup end
+" vim-markdown {{{
+let g:vim_markdown_folding_level = 2
+" }}}
+
+" }}}
+
+" Candidate on delete {{{
+
+let g:is_bash = 1 " sh -> bash
+
+" Clean trailing whitespace
+" nnoremap <leader>ww <sid>StripTrailingWhitespaces()<cr>
+
+function! <sid>StripTrailingWhitespaces()
+	" Preparation: save last search, and cursor position.
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" Do the business:
+	%s/\s\+$//e
+	" Clean up: restore previous search history, and cursor position
+	let @/=_s
+	call cursor(l, c)
+endfunction
+" }}}
