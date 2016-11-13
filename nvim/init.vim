@@ -83,6 +83,7 @@ set nobackup                 " Don't create annoying backup files
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
 set autowrite                " Automatically save before :next, :make etc.
+set noshowmatch
 set noshowmode               " We show the mode with airline or lightline
 set ignorecase               " Search case insensitive...
 set smartcase                " ... but not it begins with upper case
