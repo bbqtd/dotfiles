@@ -1,65 +1,40 @@
 " vim-plug {{{
 call plug#begin('$XDG_DATA_HOME/nvim/site/plugged')
-
 """ Candy
-" Plug 'fatih/molokai'
-Plug 'tomasr/molokai'
-Plug 'dracula/vim'
-Plug 'itchyny/lightline.vim'
+Plug 'tomasr/molokai'        " Color theme
+Plug 'itchyny/lightline.vim' " A light and configurable statusline
+Plug 'junegunn/goyo.vim'     " Distraction-free writing in Vim 
 
 """ Core tools
-Plug 'editorconfig/editorconfig-vim' " format style between editors
-Plug 'neomake/neomake'      " async job runner
-Plug 'tpope/vim-commentary' " comment everything like a boss
-Plug 'tpope/vim-surround'   " change or insert symbol around something
-" Plug 'tpope/vim-obsession'  " create and continuously updated session file
-Plug 'tpope/vim-fugitive'   " git integration
-Plug 'tpope/vim-repeat'     " extend '.' functionality
+Plug 'Chiel92/vim-autoformat'        " :Autoformat code
+Plug 'editorconfig/editorconfig-vim' " Format settings for editors
 Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async complete system
-Plug 'Chiel92/vim-autoformat' " need more research
-" Plug 'duggiefresh/vim-easydir' " create, edit and save files and directories
-" Plug 'junegunn/vim-easy-align' " allign like a boss
-Plug 'Raimondi/delimitMate'
+Plug 'neomake/neomake'      " Async job runner & linter framework
+Plug 'tpope/vim-commentary' " Comment everything like a boss
+Plug 'tpope/vim-fugitive'   " Git integration
+Plug 'tpope/vim-obsession'  " Create and continuously update session file
+Plug 'tpope/vim-repeat'     " Extend '.' functionality
+Plug 'tpope/vim-surround'   " Change or insert symbol around something
+Plug 'Raimondi/delimitMate' " Automatic closing brackets and etc
 
-""" Languge specific extensions
-""" Golang
-Plug 'fatih/vim-go',      { 'for': 'go', 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make' }
-
-""" EcmaScript
-Plug 'pangloss/vim-javascript',  { 'for': ['javascript', 'jsx'] }
-Plug 'mxw/vim-jsx',              { 'for': 'jsx' }
-Plug 'elzr/vim-json',            { 'for': 'json' }
+""" Autocomplete System & Drivers
+Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
-Plug 'millermedeiros/vim-esformatter', { 'for': ['javascript', 'jsx'] }
-" JS Documentation comments
-" Plug 'heavenshell/vim-jsdoc', { 'on': ['JsDoc'] }
+Plug 'zchee/deoplete-go',        { 'for': 'go', 'do': 'make' }
 
-""" Ruby
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-
-""" Markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'junegunn/goyo.vim'
-
-""" TeX
-Plug 'lervag/vimtex', { 'for': ['plaintex', 'tex'] }
-
-""" Fish
-Plug 'ferreum/vim-fish', { 'for': 'fish' }
-
-""" Docker
-Plug 'docker/docker', { 'for': 'Dockerfile', 'rtp': '/contrib/syntax/vim/'}
-
-""" Java
+""" Filetype plugins
+Plug 'docker/docker',                 { 'for': 'Dockerfile', 'rtp': '/contrib/syntax/vim/'}
+Plug 'ferreum/vim-fish',              { 'for': 'fish' }
+Plug 'fatih/vim-go',                  { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-
-""" Tmux
-Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
-
-Plug 'chase/vim-ansible-yaml', { 'for': ['yaml', 'ansible'] }
-
+Plug 'pangloss/vim-javascript',       { 'for': ['javascript', 'jsx'] }
+Plug 'mxw/vim-jsx',                   { 'for': 'jsx' }
+Plug 'elzr/vim-json',                 { 'for': 'json' }
+Plug 'plasticboy/vim-markdown',       { 'for': 'markdown' }
+Plug 'vim-ruby/vim-ruby',             { 'for': 'ruby' }
+Plug 'lervag/vimtex',                 { 'for': ['tex', 'plaintex'] }
+Plug 'tmux-plugins/vim-tmux',         { 'for': 'tmux' }
+Plug 'chase/vim-ansible-yaml',        { 'for': ['yaml', 'ansible'] }
 call plug#end()
 " }}}
 
