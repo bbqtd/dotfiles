@@ -1,5 +1,6 @@
 [core]
 	autocrlf = input
+	excludesFile = $XDG_CONFIG_HOME/git/gitignore
 [user]
 	name = bbqtd
 	email = bbqtd@users.noreply.github.com
