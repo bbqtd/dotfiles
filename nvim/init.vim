@@ -145,6 +145,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Remove search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 " }}}
 
 " python {{{
