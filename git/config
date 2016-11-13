@@ -13,3 +13,5 @@
 	hist = log --graph --oneline --decorate --all
 	type = cat-file -t
 	dump = cat-file -p
+[branch]
+	autosetuprebase = always
