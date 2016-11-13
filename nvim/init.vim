@@ -9,13 +9,13 @@ Plug 'junegunn/goyo.vim'     " Distraction-free writing in Vim
 Plug 'Chiel92/vim-autoformat'        " :Autoformat code
 Plug 'editorconfig/editorconfig-vim' " Format settings for editors
 Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
-Plug 'neomake/neomake'               " Async job runner & linter framework
-Plug 'tpope/vim-commentary'          " Comment everything like a boss
-Plug 'tpope/vim-fugitive'            " Git integration
-Plug 'tpope/vim-obsession'           " Create and continuously update session file
-Plug 'tpope/vim-repeat'              " Extend '.' functionality
-Plug 'tpope/vim-surround'            " Change or insert symbol around something
-Plug 'Raimondi/delimitMate'          " Automatic closing brackets and etc
+Plug 'neomake/neomake'       " Async job runner & linter framework
+Plug 'tpope/vim-commentary'  " Comment everything like a boss
+Plug 'tpope/vim-fugitive'    " Git integration
+Plug 'tpope/vim-obsession'   " Create and continuously update session file
+Plug 'tpope/vim-repeat'      " Extend '.' functionality
+Plug 'tpope/vim-surround'    " Change or insert symbol around something
+Plug 'Raimondi/delimitMate'  " Automatic closing brackets and etc
 
 """ Autocomplete System & Drivers
 Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
