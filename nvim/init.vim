@@ -3,7 +3,7 @@ call plug#begin('$XDG_DATA_HOME/nvim/site/plugged')
 """ Candy
 Plug 'tomasr/molokai'        " Color theme
 Plug 'itchyny/lightline.vim' " A light and configurable statusline
-Plug 'junegunn/goyo.vim'     " Distraction-free writing in Vim 
+Plug 'junegunn/goyo.vim'     " Distraction-free writing in Vim
 
 """ Core tools
 Plug 'Chiel92/vim-autoformat'        " :Autoformat code
@@ -99,9 +99,9 @@ set listchars=tab:▸\ ,eol:¬
 
 " Show trailing whitespaces only in `normal mode`
 augroup trailing
-	autocmd!
-	autocmd InsertEnter * :set listchars-=trail:⌴
-	autocmd InsertLeave * :set listchars+=trail:⌴
+  autocmd!
+  autocmd InsertEnter * :set listchars-=trail:⌴
+  autocmd InsertLeave * :set listchars+=trail:⌴
 augroup END
 
 " Shortcut to rapidly toggle show invisible
@@ -147,131 +147,131 @@ let g:python3_host_skip_check = 1 " disable the Python 3 interpreter check
 "
 
 augroup custom_filetypes
-	autocmd!
-	autocmd BufNewFile,BufRead .esformatter set filetype=json
+  autocmd!
+  autocmd BufNewFile,BufRead .esformatter set filetype=json
 
-	" put quickfix window always to the bottom
-	autocmd FileType qf wincmd J
+  " put quickfix window always to the bottom
+  autocmd FileType qf wincmd J
 augroup END
 
 " JSON Settings {{{
 augroup local_json_settings
-	autocmd!
-	autocmd FileType json setlocal
-				\ expandtab
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2
+  autocmd!
+  autocmd FileType json setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
 augroup END
 " }}}
 
 " Markdown settings {{{
 augroup local_markdown_settings
-	autocmd!
-	autocmd FileType markdown setlocal
-				\ spell
-				\ textwidth=90
+  autocmd!
+  autocmd FileType markdown setlocal
+        \ spell
+        \ textwidth=90
 augroup END
 " }}}
 
 " Vim settings {{{
 augroup local_vim_settings
-	autocmd!
-	autocmd FileType vim setlocal
-				\ noexpandtab
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2 
-				\ formatoptions=jcrql
-				\ foldmethod=marker
+  autocmd!
+  autocmd FileType vim setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ formatoptions=jcrql
+        \ foldmethod=marker
 augroup END
 
 " }}}
 
 " YAML settings {{{
 augroup local_yaml_settings
-	autocmd!
-	autocmd FileType yaml setlocal
-				\ expandtab
-				\ tabstop=2 
-				\ softtabstop=2
-				\ shiftwidth=2
-				\ ft=ansible
+  autocmd!
+  autocmd FileType yaml setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ ft=ansible
 augroup END
 " }}}
 
 " Fish settings {{{
 augroup local_fish_settings
-	autocmd!
-	autocmd FileType fish setlocal
-				\ noexpandtab 
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2 
+  autocmd!
+  autocmd FileType fish setlocal
+        \ noexpandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
 augroup END
 " }}}
 
 " Go settings {{{
 augroup local_go_settings
-	autocmd!
-	autocmd FileType go setlocal
-				\ noexpandtab 
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2
-				\ formatoptions=cqjr
+  autocmd!
+  autocmd FileType go setlocal
+        \ noexpandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ formatoptions=cqjr
 augroup END
 " }}}
 
 " JavaScript settings {{{
 augroup local_javascript_settings
-	autocmd!
-	autocmd FileType javascript setlocal
-				\ expandtab
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2 
-				\ formatoptions-=o
-	autocmd FileType javascript.jsx setlocal
-				\ expandtab
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2 
-				\ formatoptions-=o
+  autocmd!
+  autocmd FileType javascript setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ formatoptions-=o
+  autocmd FileType javascript.jsx setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ formatoptions-=o
 augroup END
 " }}}
 
 " TeX settings {{{
 augroup local_tex_settings
-	autocmd!
-	autocmd FileType tex setlocal
-				\ noexpandtab
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2
-				\ textwidth=90
+  autocmd!
+  autocmd FileType tex setlocal
+        \ noexpandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ textwidth=90
 augroup END
 " }}}
 
 " Ruby settings {{{
 augroup local_ruby_settings
-	autocmd!
-	autocmd FileType ruby setlocal
-				\ expandtab 
-				\ tabstop=2
-				\ softtabstop=2
-				\ shiftwidth=2 
+  autocmd!
+  autocmd FileType ruby setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
 augroup END
 " }}}
 
 " Makefile settings {{{
 augroup local_make_settings
-	autocmd!
-	autocmd FileType make setlocal
-				\ noexpandtab
-				\ tabstop=8
-				\ softtabstop=8
-				\ shiftwidth=8 
+  autocmd!
+  autocmd FileType make setlocal
+        \ noexpandtab
+        \ tabstop=8
+        \ softtabstop=8
+        \ shiftwidth=8
 augroup END
 " }}}
 " }}}
@@ -304,18 +304,18 @@ call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
 
 """ for tex
 if !exists('g:deoplete#omni#input_patterns')
-	let g:deoplete#omni#input_patterns = {}
+  let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.tex = '\\(?:'
-			\ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-			\ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-			\ . '|hyperref\s*\[[^]]*'
-			\ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-			\ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ .')'
+      \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+      \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+      \ . '|hyperref\s*\[[^]]*'
+      \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+      \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ .')'
 " }}}
 
 " easy align {{{
@@ -351,31 +351,31 @@ let g:goyo_width = 120
 
 " lightline {{{
 let g:lightline = {
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste'],
-	\             [ 'fugitive', 'filename', 'modified', 'ctrlpmark' ],
-	\             [ 'go'] ],
-	\   'right': [ [ 'lineinfo' ],
-	\              [ 'percent' ],
-	\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-	\ },
-	\ 'inactive': {
-	\   'left': [ [ 'go'] ],
-	\ },
-	\ 'component_function': {
-	\   'lineinfo':     'LightLineInfo',
-	\   'percent':      'LightLinePercent',
-	\   'modified':     'LightLineModified',
-	\   'filename':     'LightLineFilename',
-	\   'go':           'LightLineGo',
-	\   'fileformat':   'LightLineFileformat',
-	\   'filetype':     'LightLineFiletype',
-	\   'fileencoding': 'LightLineFileencoding',
-	\   'mode':         'LightLineMode',
-	\   'fugitive':     'LightLineFugitive',
-	\   'ctrlpmark':    'CtrlPMark',
-	\ },
-	\ }
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste'],
+      \             [ 'fugitive', 'filename', 'modified', 'ctrlpmark' ],
+      \             [ 'go'] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'go'] ],
+      \ },
+      \ 'component_function': {
+      \   'lineinfo':     'LightLineInfo',
+      \   'percent':      'LightLinePercent',
+      \   'modified':     'LightLineModified',
+      \   'filename':     'LightLineFilename',
+      \   'go':           'LightLineGo',
+      \   'fileformat':   'LightLineFileformat',
+      \   'filetype':     'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode':         'LightLineMode',
+      \   'fugitive':     'LightLineFugitive',
+      \   'ctrlpmark':    'CtrlPMark',
+      \ },
+      \ }
 
 function! LightLineModified()
   if &filetype == "help"
@@ -484,7 +484,7 @@ endfunction
 " au BufRead,BufNewFile *.zsh set filetype=sh
 " autocmd! BufWritePost,BufEnter *.sh,*.zsh,*.vim Neomake
 " augroup neomake_grp
-" 	autocmd! BufWritePost *sh,*.vim,*rb Neomake
+"   autocmd! BufWritePost *sh,*.vim,*rb Neomake
 " augroup end
 " }}}
 
@@ -525,25 +525,25 @@ nmap <C-g> :GoDecls<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
 
 augroup vimgo_binds
-	autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-	autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
 
-	autocmd FileType go nmap <Leader>i <Plug>(go-info)
-	autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 
-	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-	autocmd FileType go nmap <leader>t  <Plug>(go-test)
-	autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
-	autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-	autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
-	" :A -> :GoAlternate in current buffer
-	autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-	" :AV -> :GoAlternate in vertical split
-	autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-	" :AS -> :GoAlternate in split
-	autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  " :A -> :GoAlternate in current buffer
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  " :AV -> :GoAlternate in vertical split
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  " :AS -> :GoAlternate in split
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
 " }}}
 
@@ -565,14 +565,16 @@ let g:is_bash = 1 " sh -> bash
 " nnoremap <leader>ww <sid>StripTrailingWhitespaces()<cr>
 
 function! <sid>StripTrailingWhitespaces()
-	" Preparation: save last search, and cursor position.
-	let _s=@/
-	let l = line(".")
-	let c = col(".")
-	" Do the business:
-	%s/\s\+$//e
-	" Clean up: restore previous search history, and cursor position
-	let @/=_s
-	call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 " }}}
+
+" vim et sw=2
