@@ -13,7 +13,7 @@ Plug 'neomake/neomake'      " async job runner
 Plug 'tpope/vim-commentary' " comment everything like a boss
 Plug 'tpope/vim-surround'   " change or insert symbol around something
 " Plug 'tpope/vim-obsession'  " create and continuously updated session file
-" Plug 'tpope/vim-fugitive'   " git integration
+Plug 'tpope/vim-fugitive'   " git integration
 Plug 'tpope/vim-repeat'     " extend '.' functionality
 Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " async complete system
