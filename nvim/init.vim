@@ -87,8 +87,10 @@ set noshowmatch
 set noshowmode               " We show the mode with airline or lightline
 set ignorecase               " Search case insensitive...
 set smartcase                " ... but not it begins with upper case
-set nolazyredraw             " don't be lazy, but sometimes lazy is is fine
+set lazyredraw               " Wait for redraw
 set completeopt=menu,menuone
+set updatetime=400
+set shortmess+=c
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
