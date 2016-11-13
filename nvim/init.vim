@@ -172,6 +172,9 @@ let g:python3_host_skip_check = 1 " disable the Python 3 interpreter check
 augroup custom_filetypes
 	autocmd!
 	autocmd BufNewFile,BufRead .esformatter set filetype=json
+
+	" put quickfix window always to the bottom
+	autocmd FileType qf wincmd J
 augroup END
 
 " JSON Settings {{{
