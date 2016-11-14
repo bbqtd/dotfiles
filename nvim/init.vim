@@ -27,8 +27,11 @@ Plug 'docker/docker',                 { 'for': 'Dockerfile', 'rtp': '/contrib/sy
 Plug 'ferreum/vim-fish',              { 'for': 'fish' }
 Plug 'fatih/vim-go',                  { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-Plug 'pangloss/vim-javascript',       { 'for': ['javascript', 'jsx'] }
-Plug 'mxw/vim-jsx',                   { 'for': 'jsx' }
+" Plug 'pangloss/vim-javascript',       { 'for': ['javascript', 'jsx'] }
+Plug 'othree/yajs',                   { 'for': [ 'javascript', 'jsx' ] }
+Plug 'othree/es.next.syntax.vim',     { 'for': [ 'javascript', 'jsx' ] }
+Plug 'mxw/vim-jsx',                   { 'for': [ 'javascript', 'jsx' ] }
+Plug 'MaxMEllon/vim-jsx-pretty',      { 'for': [ 'javascript', 'jsx' ] }
 Plug 'elzr/vim-json',                 { 'for': 'json' }
 Plug 'plasticboy/vim-markdown',       { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',             { 'for': 'ruby' }
