@@ -512,22 +512,27 @@ endfunction
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet']
 
-nmap <C-g> :GoDecls<cr>
-imap <C-g> <esc>:<C-u>GoDecls<cr>
-
 augroup vimgo_binds
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+  autocmd!
 
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+  " Hmmm, I think jump to declaration in file/dir (Ctrl-P)
+  autocmd FileType go nmap mf :GoDecls<cr>
+  autocmd FileType go nmap md :GoDeclsDir<cr>
+
+  autocmd FileType go nmap <leader>e <Plug>(go-rename)
+
+  autocmd FileType go nmap <leader>v <Plug>(go-def-vertical)
+  autocmd FileType go nmap <leader>s <Plug>(go-def-split)
+
+  autocmd FileType go nmap <leader>i <Plug>(go-info)
+  autocmd FileType go nmap <leader>l <Plug>(go-metalinter)
 
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
   autocmd FileType go nmap <leader>t  <Plug>(go-test)
   autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+  autocmd FileType go nmap <leader>d <Plug>(go-doc)
+  autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 
   " :A -> :GoAlternate in current buffer
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
