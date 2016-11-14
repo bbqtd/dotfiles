@@ -19,13 +19,14 @@ Plug 'Raimondi/delimitMate'  " Automatic closing brackets and etc
 
 """ Autocomplete System & Drivers
 Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': [ 'javascript', 'jsx' ] }
 Plug 'zchee/deoplete-go',        { 'for': 'go', 'do': 'make' }
 
 """ Filetype plugins
 Plug 'docker/docker',                 { 'for': 'Dockerfile', 'rtp': '/contrib/syntax/vim/'}
 Plug 'ferreum/vim-fish',              { 'for': 'fish' }
 Plug 'fatih/vim-go',                  { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'ctrlpvim/ctrlp.vim',            { 'for': 'go' }
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " Plug 'pangloss/vim-javascript',       { 'for': ['javascript', 'jsx'] }
 Plug 'othree/yajs',                   { 'for': [ 'javascript', 'jsx' ] }
@@ -35,9 +36,9 @@ Plug 'MaxMEllon/vim-jsx-pretty',      { 'for': [ 'javascript', 'jsx' ] }
 Plug 'elzr/vim-json',                 { 'for': 'json' }
 Plug 'plasticboy/vim-markdown',       { 'for': 'markdown' }
 Plug 'vim-ruby/vim-ruby',             { 'for': 'ruby' }
-Plug 'lervag/vimtex',                 { 'for': ['tex', 'plaintex'] }
+Plug 'lervag/vimtex',                 { 'for': [ 'tex', 'plaintex' ] }
 Plug 'tmux-plugins/vim-tmux',         { 'for': 'tmux' }
-Plug 'chase/vim-ansible-yaml',        { 'for': ['yaml', 'ansible'] }
+Plug 'chase/vim-ansible-yaml',        { 'for': [ 'yaml', 'ansible' ] }
 call plug#end()
 " ------------------------------------------------------------------------- }}}
 
