@@ -174,6 +174,8 @@ augroup local_go_settings
         \ softtabstop=2
         \ shiftwidth=2
         \ formatoptions=cqjr
+        \ foldmethod=syntax
+        \ foldnestmax=1
 augroup END
 " ------------------------------------------------------------------------- }}}
 
@@ -497,6 +499,7 @@ let g:go_highlight_trailing_whitespace_error = 0
 
 let g:go_fmt_command       = 'goimports'
 let g:go_fmt_fail_silently = 1
+let g:go_fmt_experimental  = 1
 
 " Run `:GoBuild` or `:GoTestCompile` based on the go file
 function! s:build_go_files()
