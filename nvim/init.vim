@@ -501,6 +501,8 @@ let g:go_fmt_command       = 'goimports'
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_experimental  = 1
 
+let g:go_def_reuse_buffer = 1
+
 " Run `:GoBuild` or `:GoTestCompile` based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
