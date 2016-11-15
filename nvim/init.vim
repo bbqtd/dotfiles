@@ -162,6 +162,7 @@ augroup global_filetype_settings
 
   " Put quickfix window always to the bottom
   autocmd FileType qf wincmd J
+  autocmd FileType gitcommit wincmd J
 augroup END
 " ------------------------------------------------------------------------- }}}
 
