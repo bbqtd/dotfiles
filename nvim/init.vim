@@ -44,8 +44,7 @@ call plug#end()
 
 " --- General Settings ---------------------------------------------------- {{{
 colorscheme molokai
-let g:rehash256 = 1
-set background=dark
+set termguicolors
 
 lan en_US       " UI language
 set history=500 " Do you need huge history?
