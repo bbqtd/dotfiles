@@ -5,8 +5,12 @@
 /fisherman/*
 
 /fish/fishd.*
-
+/fish/conf.d
 /fish/functions/*
 !/fish/functions/tmux.fish
 
 /fish/completions/*
+
+node_modules
+
+gocode
