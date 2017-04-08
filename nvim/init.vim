@@ -1,40 +1,48 @@
 " --- vim-plug ------------------------------------------------------------ {{{
-call plug#begin('$XDG_DATA_HOME/nvim/site/plugged')
+call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 """ Candy
 Plug 'tomasr/molokai'        " Color theme
 Plug 'itchyny/lightline.vim' " A light and configurable statusline
 Plug 'junegunn/goyo.vim'     " Distraction-free writing in Vim
 
 """ Core tools
-Plug 'Chiel92/vim-autoformat'        " :Autoformat code
 Plug 'editorconfig/editorconfig-vim' " Format settings for editors
 Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf' } | Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'       " Async job runner & linter framework
+Plug 'sbdchd/neoformat', { 'for': [ 'javascript', 'markdown' ] }
 Plug 'tpope/vim-commentary'  " Comment everything like a boss
+Plug 'tpope/vim-eunuch'      " Vim sugar for the UNIX shell command
 Plug 'tpope/vim-fugitive'    " Git integration
 Plug 'tpope/vim-obsession'   " Create and continuously update session file
 Plug 'tpope/vim-repeat'      " Extend '.' functionality
 Plug 'tpope/vim-surround'    " Change or insert symbol around something
 Plug 'Raimondi/delimitMate'  " Automatic closing brackets and etc
+Plug 'vimwiki/vimwiki'
 
 """ Autocomplete System & Drivers
 Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': [ 'javascript', 'jsx' ] }
+Plug 'carlitux/deoplete-ternjs', { 'for': [ 'javascript' ], 'do': 'yarn global add tern' }
 Plug 'zchee/deoplete-go',        { 'for': 'go', 'do': 'make' }
 
+
 """ Filetype plugins
+Plug 'kylef/apiblueprint.vim'
 Plug 'docker/docker',                 { 'for': 'Dockerfile', 'rtp': '/contrib/syntax/vim/'}
 Plug 'ferreum/vim-fish',              { 'for': 'fish' }
 Plug 'fatih/vim-go',                  { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'ctrlpvim/ctrlp.vim',            { 'for': 'go' }
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-" Plug 'pangloss/vim-javascript',       { 'for': ['javascript', 'jsx'] }
-Plug 'othree/yajs',                   { 'for': [ 'javascript', 'jsx' ] }
-Plug 'othree/es.next.syntax.vim',     { 'for': [ 'javascript', 'jsx' ] }
-Plug 'mxw/vim-jsx',                   { 'for': [ 'javascript', 'jsx' ] }
-Plug 'MaxMEllon/vim-jsx-pretty',      { 'for': [ 'javascript', 'jsx' ] }
+Plug 'lervag/vimtex',                 { 'for': [ 'tex', 'latex' ] }
+Plug 'pangloss/vim-javascript',       { 'for': [ 'javascript' ] }
+Plug 'MaxMEllon/vim-jsx-pretty',      { 'for': [ 'javascript' ] }
+" Plug 'ruanyl/vim-fixmyjs',            { 'for': [ 'javascript', 'javascript.jsx' ] }
+" Plug 'othree/yajs',                   { 'for': [ 'javascript', 'jsx', 'javascript.jsx' ] }
+" Plug 'othree/es.next.syntax.vim',     { 'for': [ 'javascript', 'jsx', 'javascript.jsx' ] }
+" Plug 'othree/javascript-libraries-syntax.vim', { 'for': [ 'javascript', 'javascript.jsx' ] }
+" Plug 'mxw/vim-jsx',                   { 'for': [ 'javascript', 'jsx', 'javascript.jsx' ] }
 Plug 'elzr/vim-json',                 { 'for': 'json' }
-Plug 'plasticboy/vim-markdown',       { 'for': 'markdown' }
+Plug 'tpope/vim-markdown',            { 'for': 'markdown' }
+Plug 'nelstrom/vim-markdown-folding', { 'for': [ 'markdown', 'apiblueprint' ] }
 Plug 'vim-ruby/vim-ruby',             { 'for': 'ruby' }
 Plug 'lervag/vimtex',                 { 'for': [ 'tex', 'plaintex' ] }
 Plug 'tmux-plugins/vim-tmux',         { 'for': 'tmux' }
@@ -144,6 +152,18 @@ let g:python3_host_skip_check = 1 " disable the Python 3 interpreter check
 " - for simplicity just use `tabstop` == `softtabstop` == `shiftwidth` and
 "   toogle `exapndtab
 
+augroup ftstyles_grp
+  autocmd! 
+  autocmd BufNewFile,BufRead *.apib set filetype=markdown.apiblueprint
+
+  autocmd FileType markdown,apiblueprint setlocal
+        \ expandtab
+        \ tabstop=4
+        \ softtabstop=4
+        \ shiftwidth=4
+  " autocmd FileType apiblueprint runtime! 'ftplugin/markdown/folding.vim'
+augroup END
+
 " --- Fish ---------------------------------------------------------------- {{{
 augroup local_fish_settings
   autocmd!
@@ -183,18 +203,22 @@ augroup END
 " --- JavaScript ---------------------------------------------------------- {{{
 augroup local_javascript_settings
   autocmd!
-  autocmd FileType javascript setlocal
+  autocmd FileType javascript,javascript.jsx setlocal
         \ expandtab
         \ tabstop=2
         \ softtabstop=2
         \ shiftwidth=2
-        \ formatoptions-=o
-  autocmd FileType javascript.jsx setlocal
-        \ expandtab
-        \ tabstop=2
-        \ softtabstop=2
-        \ shiftwidth=2
-        \ formatoptions-=o
+        \ formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
+        " \ formatoptions-=o
+  " autocmd FileType javascript.jsx setlocal
+  "       \ noexpandtab
+  "       \ tabstop=2
+  "       \ softtabstop=2
+  "       \ shiftwidth=2
+  "       \ formatoptions-=o
+  " autocmd BufWritePre *.js :Fixmyjs
+  " autocmd BufWritePre *.jsx :Fixmyjs
+  autocmd BufWritePre *.md,*.js Neoformat
 augroup END
 " ------------------------------------------------------------------------- }}}
 
@@ -202,6 +226,17 @@ augroup END
 augroup local_json_settings
   autocmd!
   autocmd FileType json setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+augroup END
+" ------------------------------------------------------------------------- }}}
+
+" --- HTML ---------------------------------------------------------------- {{{
+augroup local_html_settings
+  autocmd!
+  autocmd FileType html setlocal
         \ expandtab
         \ tabstop=2
         \ softtabstop=2
@@ -225,7 +260,30 @@ augroup local_markdown_settings
   autocmd!
   autocmd FileType markdown setlocal
         \ spell
-        \ textwidth=90
+        \ textwidth=80
+augroup END
+" ------------------------------------------------------------------------- }}}
+
+" --- Matlab ------------------------------------------------------------- {{{
+augroup local_matlab_settings
+  autocmd!
+  autocmd FileType matlab setlocal
+        \ expandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
+        \ formatoptions-=o
+augroup END
+" ------------------------------------------------------------------------- }}}
+
+" --- Python ---------------------------------------------------------------- {{{
+augroup local_python_settings
+  autocmd!
+  autocmd FileType python setlocal
+        \ noexpandtab
+        \ tabstop=2
+        \ softtabstop=2
+        \ shiftwidth=2
 augroup END
 " ------------------------------------------------------------------------- }}}
 
@@ -281,6 +339,10 @@ augroup END
 
 " --- Plugins ------------------------------------------------------------- {{{
 
+" --- ctrlp.vim ----------------------------------------------------------- {{{
+let g:ctrlp_map = '<c-\>'
+" ------------------------------------------------------------------------- }}}
+
 " --- deoplete ------------------------------------------------------------ {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = {}
@@ -295,6 +357,18 @@ let g:deoplete#sources#go#align_class = 1
 call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
 call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+
+""" js
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+"Add extra filetypes
+let g:tern#filetypes = [
+      \ 'js',
+      \ 'javascript.jsx',
+      \ 'jsx',
+      \ ]
 
 """ TeX
 if !exists('g:deoplete#omni#input_patterns')
@@ -463,6 +537,13 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 " ------------------------------------------------------------------------- }}}
 
+" --- neoformat ----------------------------------------------------------- {{{
+let g:neoformat_try_formatprg = 1
+
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_markdown   = ['remark']
+" ------------------------------------------------------------------------- }}}
+
 " --- neomake ------------------------------------------------------------- {{{
 " let g:neomake_list_height = 3
 " let g:neomake_open_list = 0
@@ -480,13 +561,10 @@ endfunction
 " augroup neomake_grp
 "   autocmd! BufWritePost *sh,*.vim,*rb Neomake
 " augroup end
-" ------------------------------------------------------------------------- }}}
 
-" --- vim-autoformat ------------------------------------------------------ {{{
-let g:formatdef_standard_javascript = '"standard --fix --stdin"'
-let g:formatters_javascript = ['standard_javascript']
-
-nnoremap <leader>a :Autoformat<cr>
+augroup neomake_grp
+  autocmd! BufWritePost *.apib Neomake
+augroup end
 " ------------------------------------------------------------------------- }}}
 
 " --- vim-go -------------------------------------------------------------- {{{
@@ -554,7 +632,41 @@ let g:vim_json_syntax_conceal = 0
 " ------------------------------------------------------------------------- }}}
 
 " --- vim-markdown -------------------------------------------------------- {{{
-let g:vim_markdown_folding_level = 2
+" let g:vim_markdown_folding_style_pythonic = 1
+" let g:vim_markdown_new_list_item_indent = 4
+" ------------------------------------------------------------------------- }}}
+
+" --- vim-tex -------------------------------------------------------- {{{
+let g:tex_flavor='latex'
+
+let g:vimtex_latexmk_build_dir = './build'
+let g:vimtex_latexmk_progname = 'nvr'
+
+" settings for Skim
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer
+      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+" This adds a callback hook that updates Skim after compilation
+let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+function! UpdateSkim(status)
+  if !a:status | return | endif
+
+  let l:out = b:vimtex.out()
+  let l:tex = expand('%:p')
+  let l:cmd = [g:vimtex_view_general_viewer, '-r']
+  if !empty(system('pgrep Skim'))
+    call extend(l:cmd, ['-g'])
+  endif
+  if has('nvim')
+    call jobstart(l:cmd + [line('.'), l:out, l:tex])
+  elseif has('job')
+    call job_start(l:cmd + [line('.'), l:out, l:tex])
+  else
+    call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+  endif
+endfunction
 " ------------------------------------------------------------------------- }}}
 
 " ------------------------------------------------------------------------- }}}
