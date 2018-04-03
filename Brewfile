@@ -3,6 +3,8 @@ brew "curl"
 brew "git"
 brew "vim"
 
+brew "libarchive" # upgrade tar
+
 brew "fish"
 brew "go"
 brew "node"
@@ -11,6 +13,7 @@ brew "ruby"
 
 brew "cloc"
 brew "fzf"
+brew "grip"
 brew "hub"
 brew "mas"
 brew "pandoc"
