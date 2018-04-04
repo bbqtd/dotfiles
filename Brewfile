@@ -57,5 +57,8 @@ cask "quicklookase"
 cask "suspicious-package"
 cask "webpquicklook"
 
+tap "caskroom/fonts"
+cask "font-computer-modern"
+
 mas "Bubble Translate", id: 986431962
 mas "Tyme2", id: 1063996724
