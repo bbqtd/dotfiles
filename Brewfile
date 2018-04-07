@@ -2,8 +2,9 @@ brew "bash"
 brew "curl"
 brew "git"
 brew "vim"
+brew "llvm", args: ["with-toolchain"]
 
-brew "libarchive" # upgrade tar
+brew "libarchive" # bsdtar
 
 brew "fish"
 brew "go"
@@ -12,6 +13,7 @@ brew "python"
 brew "ruby"
 
 brew "cloc"
+brew "cmake"
 brew "fzf"
 brew "grip"
 brew "hub"
