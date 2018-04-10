@@ -1,8 +1,9 @@
 brew "bash"
 brew "curl"
 brew "git"
-brew "vim"
 brew "llvm", args: ["with-toolchain"]
+brew "make", args: ["with-default-names"]
+brew "vim"
 
 brew "libarchive" # bsdtar
 
