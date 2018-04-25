@@ -27,6 +27,9 @@ brew "unrar"
 brew "xz"
 brew "yarn"
 
+brew "imagemagick"
+brew "tesseract", args: ["with-all-languages"]
+
 brew "mpv"
 brew "neovim"
 brew "newsboat"
