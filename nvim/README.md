@@ -40,3 +40,7 @@ $ curl -fLo "$XDG_DATA_HOME/nvim/autoload/plug.vim" --create-dirs \
     -   `:A` - 
     -   `:AV` -
     -   `:AS` -
+
+### vim-tmux
+
+`K` - use `man tmux` for a command under cursor

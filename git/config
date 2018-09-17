@@ -2,7 +2,8 @@
 	autocrlf = input
 [user]
 	name = bbqtd
-	email = bbqtd@users.noreply.github.com
+	email = me@bbqtd.io
+	signingkey = 47DC5DDCA3E3FD5A
 [alias]
 	co = checkout
 	ci = commit
@@ -14,3 +15,5 @@
 	dump = cat-file -p
 [branch]
 	autosetuprebase = always
+[commit]
+	gpgsign = true

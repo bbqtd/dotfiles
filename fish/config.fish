@@ -1,39 +1,51 @@
-### general
+set --export LANG   'en_US.UTF-8'
+set --export EDITOR nvim
 
-# Clean path for preventing duplication inside tmux
-set --export PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
 # XDG Spec: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-set --export XDG_CONFIG_HOME ~/.config
-set --export XDG_DATA_HOME ~/.local/share
-set --export XDG_CACHE_HOME ~/.cache
-set --export XDG_RUNTIME_DIR ~/.runtime
+set --export XDG_CACHE_HOME  "$HOME/.cache"
+set --export XDG_CONFIG_HOME "$HOME/.config"
+set --export XDG_DATA_HOME   "$HOME/.local/share"
+set --export XDG_RUNTIME_DIR "$HOME/.runtime"
+mkdir -p "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_RUNTIME_DIR"
 
-# user environment
-set --export EDITOR nvim
-set --export LOCALBIN ~/.local/bin
+# if not test -d "$XDG_CACHE_HOME"
+# 	mkdir -p "$XDG_CACHE_HOME"
+# end
 
+# set --export XDG_CONFIG_HOME "$HOME/.config"
+# if not test -d "$XDG_CONFIG_HOME"
+# 	mkdir -p "$XDG_CONFIG_HOME"
+# end
 
-### tools
-# neo
-set --export NVIM_LOG_FILE $XDG_DATA_HOME/nvim/log/.nvimlog
+# set --export XDG_DATA_HOME "$HOME/.local/share"
+# if not test -d "$XDG_DATA_HOME"
+# 	mkdir -p "$XDG_DATA_HOME"
+# end
 
-# tmux
-set --export TMUX_TMPDIR $XDG_RUNTIME_DIR/tmux
-set --export FZF_TMUX 1
-set --export FZF_DEFAULT_COMMAND 'pt --hidden --home-ptignore --ignore .git -g ""'
+# set --export XDG_RUNTIME_DIR "$HOME/.runtime"
+# if not test -d "$XDG_RUNTIME_DIR"
+# 	mkdir -p "$XDG_RUNTIME_DIR"
+# end
 
-### langs
-# go
+set --export LOCAL_HOME "$HOME/.local"
 
-set --export GOPATH ~/Code/go
-set --export GOBIN "$GOPATH/bin"
+set --export CARGO_HOME  "$LOCAL_HOME/cargo"
+set --export GNUPGHOME   "$LOCAL_HOME/gnupg"
+set --export GOPATH      "$LOCAL_HOME/go"
+set --export RUSTUP_HOME "$LOCAL_HOME/rustup"
 
-# npm / yarn
-set --export npm_config_userconfig $XDG_CONFIG_HOME/npm/config
-set --export npm_config_cache $XDG_CACHE_HOME/npm
+set --export TMUX_TMPDIR "$XDG_RUNTIME_DIR/tmux"
+mkdir -p "$TMUX_TMPDIR"
 
-# tex
-set --export TEXBIN /Library/Tex/texbin
+set --export HOMEBREW_CACHE "$XDG_CACHE_HOME/brew"
+set --export HOMEBREW_LOGS  "$XDG_DATA_HOME/brew/logs"
+set --export HOMEBREW_TEMP  "$XDG_DATA_HOME/brew/temp"
+set --export HOMEBREW_FORCE_BREWED_GIT 1
+set --export HOMEBREW_NO_ANALYTICS     1
+set --export HOMEBREW_NO_GITHUB_API    1
 
-set --export PATH $GOBIN $LOCALBIN $TEXBIN $PATH
+# TODO: test exist
+# ln -s ~/.config/gnupg/gpg-agent.conf ~/.local/gnupg/gpg-agent.conf
+
+set --export fish_user_paths "$GOPATH/bin" "$CARGO_HOME/bin" /usr/local/sbin

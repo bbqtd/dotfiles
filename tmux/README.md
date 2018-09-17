@@ -1,8 +1,9 @@
 ## General
 
--   `ctrl-f` - is `prefix`.
+-   `alt-;` - is `prefix`. (assign in to `ctrl-;` in your terminal)
 -   `prefix r` - source config.
 -   `prefix g` - list of session. Prompts for session name and switches to it. Performs 'kind-of' name completion. 
+- `prefix [` - copy mode
 
 ### moving
 
